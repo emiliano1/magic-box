@@ -1183,6 +1183,16 @@ class EloquentRepository implements Repository
 		return $this->query()->orderByRaw('RAND()')->first();
 	}
 
+        /**
+	 * Get all elements against the base query, in random order.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
+	public function randomQuery($seed = ''): Collection
+	{
+		return $this->query()->inRandomOrder($seed)->get();
+	}
+
 	/**
 	 * Get the primary key from input.
 	 *
