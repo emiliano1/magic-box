@@ -1183,14 +1183,15 @@ class EloquentRepository implements Repository
 		return $this->query()->orderByRaw('RAND()')->first();
 	}
 
-        /**
+	/**
 	 * Get all elements against the base query, in random order.
 	 *
-	 * @return \Illuminate\Database\Eloquent\Collection
+	 * @param string $seed
+	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
-	public function randomQuery($seed = ''): Collection
+	public function randomQuery($seed = ''): Builder
 	{
-		return $this->query()->inRandomOrder($seed)->get();
+		return $this->query()->inRandomOrder($seed);
 	}
 
 	/**
@@ -1498,3 +1499,4 @@ class EloquentRepository implements Repository
 		return method_exists($relation, 'getForeignKeyName') ? $relation->getForeignKeyName() : $relation->getPlainForeignKey();
 	}
 }
+
