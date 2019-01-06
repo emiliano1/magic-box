@@ -1164,6 +1164,16 @@ class EloquentRepository implements Repository
 	}
 
 	/**
+	 * Include association count.
+	 *
+	 * @return int
+	 */
+	public function withCount($association): Builder
+	{
+		return $this->query()->withCount($association);
+	}
+
+	/**
 	 * Determine if the base query returns a nonzero count.
 	 *
 	 * @return bool
